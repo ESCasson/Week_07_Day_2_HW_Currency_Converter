@@ -6,7 +6,22 @@ document.addEventListener('DOMContentLoaded', () => {
     el: "#app",
 
     data: {
-      allRates:[]
+      allRates:[],
+      amount: 0,
+      calc: "from",
+      conversionRate: 1,
+    },
+
+    computed: {
+      calculation: function(){
+        if (this.calc === "from"){
+        const value = this.amount * this.conversionRate
+        return value.toFixed(2)
+      } else {
+        const value = this.amount / this.conversionRate
+        return value.toFixed(2)
+        }
+      },
     },
 
     mounted(){
@@ -18,7 +33,9 @@ document.addEventListener('DOMContentLoaded', () => {
         const request = fetch("https://api.exchangeratesapi.io/latest")
         .then(response => response.json())
         .then(data => this.allRates = data.rates)
-      }
+      },
+
+
 
 
 
