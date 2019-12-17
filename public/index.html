@@ -8,8 +8,11 @@
   <title>Document</title>
 </head>
 <body>
+  <h1>The Page</h1>
   <div id="app">
-
+    <div v-for="(value, name) in allRates">
+  {{ name }}: {{ value }}
+</div>
   </div>
 
 </body>
